@@ -5,7 +5,7 @@ server {
     listen 8080;
     listen [::]:8080;
 
-    client_max_body_size 50m;
+    client_max_body_size 1m;
 
     port_in_redirect off;
     absolute_redirect off;
@@ -28,7 +28,7 @@ server {
         proxy_cache_valid 200 1h;
         proxy_cache_revalidate off;
         proxy_cache_background_update off;
-        
+        proxy_ignore_headers Cache-Control Expires;
     }
 
     location = /stub_status {
